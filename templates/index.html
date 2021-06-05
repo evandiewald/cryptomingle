@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="my-3">Greetings CryptoMinglers!</h1>
+{% if users_list %}
+
+{% for user in users_list %}
+{% set contact_url = 'mailto:' + user['email'] %}
+<div class="card mb-3">
+    <div class="card-horizontal">
+        <div class="img-square-wrapper">
+            <img class="" src={{ user['imageurl'] }} alt="Profile picture" height=200>
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">{{ user['name'] }}, {{ user['age'] }}</h4>
+            <p class="card-text">{{ user['bio'] }}</p>
+            <p class="card-text">Height: {{ user['height'] }}" <a href={{ user['transaction'] }}>Verify on Etherscan</a></p>
+        </div>
+    </div>
+    <div class="card-footer">
+        <small class="text-muted"><a href={{ contact_url }}>Contact {{ user['name'] }}</a></small>
+    </div>
+</div>
+{% endfor %}
+{% else %}
+<p>No users yet :(</p>
+<p><a href="/signup/">Want to sign up?</a></p>
+{% endif %}
+{% endblock %}
