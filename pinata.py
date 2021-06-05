@@ -10,8 +10,8 @@ def pin_to_pinata(file_obj, filename):
         ('file', (filename, file_obj, 'image/jpeg'))
     ]
     headers = {
-        'pinata_api_key': '4332bafc5b243c8f4d04',
-        'pinata_secret_api_key': 'f98b41132ea90fddc09a5254363afd3223775551a0824a678916b3cdb360dfc5'
+        'pinata_api_key': config.PINATA_KEY,
+        'pinata_secret_api_key': config.PINATA_SECRET
     }
 
     response = requests.request("POST", url, headers=headers, data=payload, files=files)
