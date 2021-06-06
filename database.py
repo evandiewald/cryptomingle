@@ -23,7 +23,7 @@ def add_user(session, users_table, height, address, name, email, age, bio, image
 
 
 def get_next_id(session, users_table):
-    next_id = session.query(func.max(users_table.columns.id)).scalar()
+    next_id = session.query(func.max(users_table.columns.id)).scalar() + 1
     if not next_id:
         next_id = 1
     return next_id
